@@ -1,4 +1,5 @@
 import { ExtendedClient } from "../interface/ExtendedClient";
+import { onGuildMemberDelete } from "./onGuildMemberDelete";
 
 import { onReady } from "./onReady";
 
@@ -10,6 +11,10 @@ import { onReady } from "./onReady";
 export const handleEvents = (bot: ExtendedClient) => {
   bot.on("ready", async () => {
     await onReady(bot);
+  });
+
+  bot.on("guildMemberRemove", async (member) => {
+    await onGuildMemberDelete(bot, member);
   });
 
   bot.on("interaction", async (interaction) => {
