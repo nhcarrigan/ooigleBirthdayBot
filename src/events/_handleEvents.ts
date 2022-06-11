@@ -1,6 +1,6 @@
 import { ExtendedClient } from "../interface/ExtendedClient";
-import { onGuildMemberDelete } from "./onGuildMemberDelete";
 
+import { onGuildMemberDelete } from "./onGuildMemberDelete";
 import { onReady } from "./onReady";
 
 /**
