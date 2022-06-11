@@ -19,7 +19,7 @@ const monthToString: { [key: number]: string } = {
  * @param {number} timestamp The timestamp to convert to string.
  * @returns {string} The timestamp in the `Jan-1` format.
  */
-export const generateDateQuery = (timestamp: number) => {
+export const generateDateString = (timestamp: number) => {
   const date = new Date(timestamp);
   const month = date.getMonth();
   const day = date.getDate();

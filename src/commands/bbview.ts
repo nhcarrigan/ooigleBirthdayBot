@@ -3,6 +3,7 @@ import { SlashCommandBuilder } from "@discordjs/builders";
 import BirthdayModel from "../database/models/Birthday";
 import { Command } from "../interface/Command";
 import { errorHandler } from "../utils/errorHandler";
+import { generateDateString } from "../utils/generateDateString";
 
 export const bbview: Command = {
   data: new SlashCommandBuilder()
@@ -23,7 +24,9 @@ export const bbview: Command = {
       }
 
       await interaction.editReply({
-        content: `Your birthday is set to ${data.birthday}!`,
+        content: `Your birthday is set to ${generateDateString(
+          data.birthday
+        )}!`,
       });
     } catch (err) {
       await errorHandler(bot, err, "bbview command");

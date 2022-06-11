@@ -4,7 +4,7 @@ import { MessageEmbed } from "discord.js";
 import BirthdayModel from "../database/models/Birthday";
 import { Command } from "../interface/Command";
 import { errorHandler } from "../utils/errorHandler";
-import { generateDateQuery } from "../utils/generateDateString";
+import { generateDateString } from "../utils/generateDateString";
 
 export const bblist: Command = {
   data: new SlashCommandBuilder()
@@ -37,7 +37,7 @@ export const bblist: Command = {
       embed.setTitle("Recent and upcoming birthdays!");
       embed.setDescription(
         results
-          .map((el) => `<@!${el.userId}>: ${generateDateQuery(el.birthday)}`)
+          .map((el) => `<@!${el.userId}>: ${generateDateString(el.birthday)}`)
           .join("\n")
       );
       await interaction.editReply({ embeds: [embed] });
