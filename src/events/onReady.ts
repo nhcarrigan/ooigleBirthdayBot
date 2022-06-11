@@ -4,7 +4,6 @@ import { scheduleJob } from "node-schedule";
 import BirthdayModel from "../database/models/Birthday";
 import { ExtendedClient } from "../interface/ExtendedClient";
 import { errorHandler } from "../utils/errorHandler";
-import { generateDateQuery } from "../utils/generateDateQuery";
 import { logHandler } from "../utils/logHandler";
 
 /**
@@ -20,7 +19,10 @@ export const onReady = async (bot: ExtendedClient) => {
     scheduleJob(bot.config.cron, async () => {
       try {
         //TODO: fetch today's birthdays from database
-        const birthday = generateDateQuery();
+        const today = new Date();
+        const birthday = new Date(
+          `${today.getMonth() + 1}-${today.getDate()}-2000`
+        ).getTime();
         const birthdays = await BirthdayModel.find({ birthday });
 
         const ids = birthdays.map((doc) => `<@!${doc.userId}>`);

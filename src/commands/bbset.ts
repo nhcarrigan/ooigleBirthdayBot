@@ -89,9 +89,9 @@ export const bbset: Command = {
 
       const data =
         (await BirthdayModel.findOne({ userId: id })) ||
-        (await BirthdayModel.create({ userId: id, birthday: "" }));
+        (await BirthdayModel.create({ userId: id, birthday: 0 }));
 
-      data.birthday = `${month}-${day}`;
+      data.birthday = new Date(`${month}-${day}-2000`).getTime();
       await data.save();
 
       await interaction.editReply(

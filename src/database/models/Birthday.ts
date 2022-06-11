@@ -7,14 +7,14 @@ const BirthdaySchema = new Schema({
     unique: true,
   },
   birthday: {
-    type: String,
+    type: Number,
     required: true,
   },
 });
 
 export interface Birthday extends Document {
   userId: string;
-  birthday: string;
+  birthday: number;
 }
 
 export default model<Birthday>("Birthday", BirthdaySchema);
