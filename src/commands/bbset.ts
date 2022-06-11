@@ -3,6 +3,7 @@ import { SlashCommandBuilder } from "@discordjs/builders";
 import BirthdayModel from "../database/models/Birthday";
 import { Command } from "../interface/Command";
 import { errorHandler } from "../utils/errorHandler";
+import { validateDate } from "../utils/validateDate";
 
 export const bbset: Command = {
   data: new SlashCommandBuilder()
@@ -79,7 +80,12 @@ export const bbset: Command = {
       const day = interaction.options.getInteger("day", true);
       const id = interaction.user.id;
 
-      // validate date
+      if (!validateDate(month, day)) {
+        await interaction.editReply({
+          content: `${month} ${day} is not a valid date!`,
+        });
+        return;
+      }
 
       const data =
         (await BirthdayModel.findOne({ userId: id })) ||
