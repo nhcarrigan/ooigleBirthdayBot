@@ -14,6 +14,7 @@ export const validateEnv = (): ExtendedClient["config"] => {
     !process.env.MONGO_URI ||
     !process.env.GUILD_ID ||
     !process.env.CHANNEL_ID ||
+    !process.env.ROLE_ID ||
     !process.env.DEBUG_HOOK ||
     !process.env.CRON
   ) {
@@ -26,6 +27,7 @@ export const validateEnv = (): ExtendedClient["config"] => {
     dbUri: process.env.MONGO_URI,
     guildId: process.env.GUILD_ID,
     channelId: process.env.CHANNEL_ID,
+    roleId: process.env.ROLE_ID,
     debug: process.env.DEBUG_HOOK,
     cron: process.env.CRON,
   };

@@ -35,6 +35,23 @@ export const onReady = async (bot: ExtendedClient) => {
           guild.channels.cache.get(bot.config.channelId) ||
           (await guild.channels.fetch(bot.config.channelId));
 
+        const birthdayRole = await guild.roles.fetch(bot.config.roleId);
+
+        if (birthdayRole) {
+          const members = birthdayRole.members.map((member) => member);
+          for (const member of members) {
+            await member.roles.remove(birthdayRole);
+          }
+          if (ids.length) {
+            for (const id of ids) {
+              const member = await guild.members.fetch(id);
+              if (member) {
+                await member.roles.add(birthdayRole);
+              }
+            }
+          }
+        }
+
         if (!ids.length) {
           await (channel as TextBasedChannel).send({
             content: `Oh no! There are no birthdays today. Don't forget you can use the \`/bbset\` command to set your birthday!`,

@@ -8,6 +8,7 @@ export interface ExtendedClient extends Client {
     dbUri: string;
     guildId: string;
     channelId: string;
+    roleId: string;
     debug: string;
     cron: string;
   };
