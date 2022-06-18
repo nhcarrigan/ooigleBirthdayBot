@@ -56,6 +56,7 @@ export const onReady = async (bot: ExtendedClient) => {
           await (channel as TextBasedChannel).send({
             content: `Oh no! There are no birthdays today. Don't forget you can use the \`/bbset\` command to set your birthday!`,
           });
+          return;
         }
 
         await (channel as TextBasedChannel).send({
