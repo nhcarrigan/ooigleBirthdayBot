@@ -26,6 +26,7 @@ export const onReady = async (bot: ExtendedClient) => {
         const birthdays = await BirthdayModel.find({ birthday });
 
         const ids = birthdays.map((doc) => `<@!${doc.userId}>`);
+        const rawIds = birthdays.map((doc) => doc.userId);
 
         const guild =
           bot.guilds.cache.get(bot.config.guildId) ||
@@ -43,7 +44,7 @@ export const onReady = async (bot: ExtendedClient) => {
             await member.roles.remove(birthdayRole);
           }
           if (ids.length) {
-            for (const id of ids) {
+            for (const id of rawIds) {
               const member = await guild.members.fetch(id);
               if (member) {
                 await member.roles.add(birthdayRole);
