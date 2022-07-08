@@ -13,4 +13,5 @@ export interface ExtendedClient extends Client {
     cron: string;
   };
   commands: Command[];
+  cache: string[];
 }
