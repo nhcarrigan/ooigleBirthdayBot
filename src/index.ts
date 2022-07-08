@@ -12,6 +12,7 @@ import { validateEnv } from "./utils/validateEnv";
   const bot = new Client({ intents: IntentOptions }) as ExtendedClient;
   bot.config = validateEnv();
   bot.commands = await loadCommands(bot);
+  bot.cache = [];
 
   handleEvents(bot);
   await connectDb(bot);
