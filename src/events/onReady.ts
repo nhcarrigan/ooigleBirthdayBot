@@ -39,6 +39,7 @@ export const onReady = async (bot: ExtendedClient) => {
         const birthdayRole = await guild.roles.fetch(bot.config.roleId);
 
         if (birthdayRole) {
+          await guild.members.fetch();
           const members = birthdayRole.members.map((member) => member);
           for (const member of members) {
             await member.roles.remove(birthdayRole);
