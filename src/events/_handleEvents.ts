@@ -1,6 +1,7 @@
 import { ExtendedClient } from "../interface/ExtendedClient";
 
 import { onGuildMemberDelete } from "./onGuildMemberDelete";
+import { onInteraction } from "./onInteraction";
 import { onReady } from "./onReady";
 
 /**
@@ -17,14 +18,8 @@ export const handleEvents = (bot: ExtendedClient) => {
     await onGuildMemberDelete(bot, member);
   });
 
-  bot.on("interaction", async (interaction) => {
-    if (interaction.isCommand()) {
-      for (const command of bot.commands) {
-        if (command.data.name === interaction.commandName) {
-          await command.run(bot, interaction);
-          break;
-        }
-      }
-    }
-  });
+  bot.on(
+    "interaction",
+    async (interaction) => await onInteraction(bot, interaction)
+  );
 };
