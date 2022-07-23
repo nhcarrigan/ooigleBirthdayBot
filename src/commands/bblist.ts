@@ -1,5 +1,5 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
-import { MessageEmbed } from "discord.js";
+import { EmbedBuilder } from "discord.js";
 
 import BirthdayModel from "../database/models/Birthday";
 import { Command } from "../interface/Command";
@@ -33,7 +33,7 @@ export const bblist: Command = {
         return;
       }
 
-      const embed = new MessageEmbed();
+      const embed = new EmbedBuilder();
       embed.setTitle("Recent and upcoming birthdays!");
       embed.setDescription(
         results

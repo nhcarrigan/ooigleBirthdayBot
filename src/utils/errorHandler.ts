@@ -1,4 +1,4 @@
-import { MessageEmbed, WebhookClient } from "discord.js";
+import { EmbedBuilder, WebhookClient } from "discord.js";
 
 import { ExtendedClient } from "../interface/ExtendedClient";
 
@@ -29,7 +29,7 @@ export const errorHandler = async (
   );
 
   if (bot.config.debug) {
-    const embed = new MessageEmbed();
+    const embed = new EmbedBuilder();
     embed.setTitle(`There was an error message in the ${context}!`);
     embed.setDescription(
       `\`\`\`\n${JSON.stringify(
@@ -38,7 +38,7 @@ export const errorHandler = async (
         2
       )}\n\`\`\``
     );
-    embed.addField(`Error message`, error.message);
+    embed.addFields([{ name: `Error message`, value: error.message }]);
 
     const debugHook = new WebhookClient({ url: bot.config.debug });
     await debugHook.send({ embeds: [embed] });

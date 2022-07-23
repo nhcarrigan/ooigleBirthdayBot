@@ -14,7 +14,7 @@ export const onInteraction = async (
   interaction: Interaction
 ) => {
   try {
-    if (interaction.isCommand()) {
+    if (interaction.isChatInputCommand()) {
       for (const command of bot.commands) {
         if (command.data.name === interaction.commandName) {
           await command.run(bot, interaction);
