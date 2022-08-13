@@ -19,7 +19,7 @@ export const handleEvents = (bot: ExtendedClient) => {
   });
 
   bot.on(
-    "interaction",
+    "interactionCreate",
     async (interaction) => await onInteraction(bot, interaction)
   );
 };
