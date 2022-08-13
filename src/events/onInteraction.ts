@@ -15,12 +15,16 @@ export const onInteraction = async (
 ) => {
   try {
     if (interaction.isChatInputCommand()) {
-      for (const command of bot.commands) {
-        if (command.data.name === interaction.commandName) {
-          await command.run(bot, interaction);
-          break;
-        }
+      const target = bot.commands.find(
+        (c) => c.data.name === interaction.commandName
+      );
+      if (!target) {
+        await interaction.reply({
+          content: "This command doesn't seem to exist.",
+        });
+        return;
       }
+      await target.run(bot, interaction);
     }
   } catch (err) {
     await errorHandler(bot, err, "on interaction");
