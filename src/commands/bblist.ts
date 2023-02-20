@@ -40,6 +40,10 @@ export const bblist: Command = {
           .map((el) => `<@!${el.userId}>: ${generateDateString(el.birthday)}`)
           .join("\n")
       );
+      embed.setFooter({
+        text: "Join our server: https://discord.gg/nhcarrigan",
+        iconURL: "https://cdn.nhcarrigan.com/profile.png",
+      });
       await interaction.editReply({ embeds: [embed] });
     } catch (err) {
       await errorHandler(bot, err, "bblist command");

@@ -1,3 +1,4 @@
+import { EmbedBuilder } from "@discordjs/builders";
 import { TextBasedChannel } from "discord.js";
 import { scheduleJob } from "node-schedule";
 
@@ -60,16 +61,39 @@ export const onReady = async (bot: ExtendedClient) => {
         }
 
         if (!ids.length) {
+          const noEmbed = new EmbedBuilder();
+          noEmbed.setTitle("Oh no! 🙁");
+          noEmbed.setDescription(
+            "There are no birthdays today. 😭\n\nDon't forget you can use the `/bbset` command to set your birthday!"
+          );
+          noEmbed.setFooter({
+            text: "Join our server: https://discord.gg/nhcarrigan",
+            iconURL: "https://cdn.nhcarrigan.com/profile.png",
+          });
+          noEmbed.setImage(
+            "https://media.tenor.com/h2RyGfmdvXEAAAAC/mushoku-tensei-eris.gif"
+          );
+
           await (channel as TextBasedChannel).send({
-            content: `Oh no! There are no birthdays today. Don't forget you can use the \`/bbset\` command to set your birthday!`,
+            embeds: [noEmbed],
           });
           return;
         }
 
+        const embed = new EmbedBuilder();
+        embed.setTitle("Happy Birthday~! 🎉🥳🎊");
+        embed.setDescription(
+          "We hope you have an absolutely stupendous and wonderful day! 🎂🎈🎁\n\nFriends, feel free to share your birthday wishes! But this message does ping them, so no need to ping them again. 💜"
+        );
+        embed.setImage("https://media.tenor.com/g4LQl7KK1XcAAAAC/party.gif");
+        embed.setFooter({
+          text: "Join our server: https://discord.gg/nhcarrigan",
+          iconURL: "https://cdn.nhcarrigan.com/profile.png",
+        });
+
         await (channel as TextBasedChannel).send({
-          content: `Happy birthday to the following users!\n${ids.join(
-            ", "
-          )}\nThis message pings them, so no need to ping them again - but feel free to share your birthday wishes!`,
+          content: `${ids.join(", ")}`,
+          embeds: [embed],
         });
       } catch (err) {
         await errorHandler(bot, err, "scheduled birthday post");
