@@ -2,9 +2,11 @@ import { EmbedBuilder } from "@discordjs/builders";
 import { TextBasedChannel } from "discord.js";
 import { scheduleJob } from "node-schedule";
 
+import { BirthdayGifs, CryingGifs } from "../config/Gifs";
 import BirthdayModel from "../database/models/Birthday";
 import { ExtendedClient } from "../interface/ExtendedClient";
 import { errorHandler } from "../utils/errorHandler";
+import { getRandomValue } from "../utils/getRandomValue";
 import { logHandler } from "../utils/logHandler";
 
 /**
@@ -70,9 +72,7 @@ export const onReady = async (bot: ExtendedClient) => {
             text: "Join our server: https://discord.gg/nhcarrigan",
             iconURL: "https://cdn.nhcarrigan.com/profile.png",
           });
-          noEmbed.setImage(
-            "https://media.tenor.com/h2RyGfmdvXEAAAAC/mushoku-tensei-eris.gif"
-          );
+          noEmbed.setImage(getRandomValue(CryingGifs));
 
           await (channel as TextBasedChannel).send({
             embeds: [noEmbed],
@@ -85,7 +85,7 @@ export const onReady = async (bot: ExtendedClient) => {
         embed.setDescription(
           "We hope you have an absolutely stupendous and wonderful day! 🎂🎈🎁\n\nFriends, feel free to share your birthday wishes! But this message does ping them, so no need to ping them again. 💜"
         );
-        embed.setImage("https://media.tenor.com/g4LQl7KK1XcAAAAC/party.gif");
+        embed.setImage(getRandomValue(BirthdayGifs));
         embed.setFooter({
           text: "Join our server: https://discord.gg/nhcarrigan",
           iconURL: "https://cdn.nhcarrigan.com/profile.png",
