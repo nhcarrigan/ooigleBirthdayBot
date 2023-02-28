@@ -69,7 +69,7 @@ export const onReady = async (bot: ExtendedClient) => {
             "There are no birthdays today. 😭\n\nDon't forget you can use the `/bbset` command to set your birthday!"
           );
           noEmbed.setFooter({
-            text: "Join our server: https://discord.gg/nhcarrigan",
+            text: "Join our server: https://chat.naomi.lgbt",
             iconURL: "https://cdn.nhcarrigan.com/profile.png",
           });
           noEmbed.setImage(getRandomValue(CryingGifs));
@@ -87,7 +87,7 @@ export const onReady = async (bot: ExtendedClient) => {
         );
         embed.setImage(getRandomValue(BirthdayGifs));
         embed.setFooter({
-          text: "Join our server: https://discord.gg/nhcarrigan",
+          text: "Join our server: https://chat.naomi.lgbt",
           iconURL: "https://cdn.nhcarrigan.com/profile.png",
         });
 
