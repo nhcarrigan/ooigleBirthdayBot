@@ -1,5 +1,4 @@
-import { SlashCommandBuilder } from "@discordjs/builders";
-import { EmbedBuilder } from "discord.js";
+import { EmbedBuilder, SlashCommandBuilder } from "discord.js";
 
 import BirthdayModel from "../database/models/Birthday";
 import { Command } from "../interface/Command";
