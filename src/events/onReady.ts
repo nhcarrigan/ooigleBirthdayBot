@@ -1,5 +1,4 @@
-import { EmbedBuilder } from "@discordjs/builders";
-import { TextBasedChannel } from "discord.js";
+import { EmbedBuilder, TextBasedChannel } from "discord.js";
 import { scheduleJob } from "node-schedule";
 
 import { BirthdayGifs, CryingGifs } from "../config/Gifs";
