@@ -1,12 +1,10 @@
-# Project Name
+# Ooigle's Birthday Bot
 
-Project Description
+This is a bot I built for my bestie Ooigle to help run the Caylus Crew server.
 
 ## Live Version
 
-This page is not yet deployed.
-
-<!--This page is currently deployed. [View the live website.]()-->
+This page is currently deployed. [View the live website.](https://discord.gg/infinite)
 
 ## Feedback and Bugs
 
