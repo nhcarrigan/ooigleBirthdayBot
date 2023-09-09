@@ -39,7 +39,7 @@ export const bbmonth: Command = {
           .join("\n")
       );
       embed.setFooter({
-        text: "Join our server: https://chat.naomi.lgbt",
+        text: "Join our server: https://chat.nhcarrigan.com",
         iconURL: "https://cdn.nhcarrigan.com/profile.png",
       });
       await interaction.editReply({ embeds: [embed] });
