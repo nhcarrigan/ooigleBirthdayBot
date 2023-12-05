@@ -32,8 +32,8 @@ devDependencies:
     specifier: 1.0.1
     version: 1.0.1(typescript@5.3.2)
   '@types/node-schedule':
-    specifier: 2.1.4
-    version: 2.1.4
+    specifier: 2.1.5
+    version: 2.1.5
   eslint:
     specifier: 8.55.0
     version: 8.55.0
@@ -300,8 +300,8 @@ packages:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: true
 
-  /@types/node-schedule@2.1.4:
-    resolution: {integrity: sha512-H32fetKLCtKatSkQ6VT9wuiHyrLftuUZZp8g3iU8biYxjQIB/MlV0K4UX/mMOIdGnADCnbe5uzIa5mO6LqVD1g==}
+  /@types/node-schedule@2.1.5:
+    resolution: {integrity: sha512-bN0MiplDBUxNMmlEi4iykjLYD7+Ze3DEevzliCn8WYuDwYSPj/5XFh8wZw+YXPLpLxiNWlIONYiQ67g/vowSMA==}
     dependencies:
       '@types/node': 20.4.8
     dev: true
