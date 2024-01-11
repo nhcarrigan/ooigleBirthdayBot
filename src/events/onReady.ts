@@ -1,4 +1,4 @@
-import { EmbedBuilder, TextBasedChannel } from "discord.js";
+import { EmbedBuilder, TextBasedChannel, WebhookClient } from "discord.js";
 import { scheduleJob } from "node-schedule";
 
 import { BirthdayGifs, CryingGifs } from "../config/Gifs";
@@ -6,7 +6,6 @@ import BirthdayModel from "../database/models/Birthday";
 import { ExtendedClient } from "../interface/ExtendedClient";
 import { errorHandler } from "../utils/errorHandler";
 import { getRandomValue } from "../utils/getRandomValue";
-import { logHandler } from "../utils/logHandler";
 
 /**
  * Module to listen to the `ready` event from Discord. Mounts the daily
@@ -16,7 +15,16 @@ import { logHandler } from "../utils/logHandler";
  */
 export const onReady = async (bot: ExtendedClient) => {
   try {
-    logHandler.log("info", "Connected to Discord!");
+    if (bot.config.debug) {
+      const debugHook = new WebhookClient({ url: bot.config.debug });
+      await debugHook.send({
+        content: "Connected to Discord~!",
+        username: bot.user?.username ?? "Birthday Bot",
+        avatarURL:
+          bot.user?.displayAvatarURL() ??
+          "https://cdn.nhcarrigan.com/avatars/nhcarrigan.png",
+      });
+    }
 
     scheduleJob(bot.config.cron, async () => {
       try {
