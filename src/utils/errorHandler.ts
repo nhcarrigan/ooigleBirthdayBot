@@ -41,6 +41,12 @@ export const errorHandler = async (
     embed.addFields([{ name: `Error message`, value: error.message }]);
 
     const debugHook = new WebhookClient({ url: bot.config.debug });
-    await debugHook.send({ embeds: [embed] });
+    await debugHook.send({
+      embeds: [embed],
+      username: bot.user?.username ?? "Birthday Bot",
+      avatarURL:
+        bot.user?.displayAvatarURL() ??
+        "https://cdn.nhcarrigan.com/avatars/nhcarrigan.png",
+    });
   }
 };
