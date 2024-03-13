@@ -35,7 +35,7 @@
   "dependencies": {
     "discord.js": "14.14.1",
     "dotenv": "16.4.5",
-    "mongoose": "7.6.9",
+    "mongoose": "7.6.10",
     "node-schedule": "2.1.1",
     "winston": "3.12.0"
   }
